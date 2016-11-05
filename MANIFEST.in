@@ -1,0 +1,10 @@
+include MANIFEST.in
+include .gitignore
+include README.md
+include LICENSE
+include requirements.txt
+include pybmp/conf/*
+include include/*
+include src/*
+include res/*
+include dll/.gitkeep
