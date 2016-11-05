@@ -17,6 +17,10 @@
 #include <string.h>
 #include <stdarg.h>
 
+#ifdef __WINNT__
+#include <windows.h>
+#endif
+
 #ifdef __BMP_MAKE_DLL_
 #define __PORT __declspec(dllexport) // make dll mode
 #else
@@ -28,8 +32,13 @@ typedef unsigned int uint;
 
 #define BUFSIZE 4096
 
-__PORT uint writebmp(char *fn, char *bmpbuffer);
-__PORT uint drawbmp(char *bmpbuffer);
+#define IASPECTX 16
+#define IASPECTY 24
+
+#ifdef __WINNT__
+__PORT uint writebmp(char *fn, HBITMAP hbmp, int c, int r, HDC hdc);
+#endif
+__PORT uint drawbmp(int c, int r, int p, int d, char *bmpbuffer, char *fn);
 
 #define _BMP "bmp"
 
